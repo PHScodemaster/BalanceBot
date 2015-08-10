@@ -1,0 +1,59 @@
+As we are preparing for the beginning of the Robot season in January I suggest we work on putting together a 
+BalanceBot and continue to pick up the technology and skills we need to develop a walking robot and meet your
+long-term goals.
+
+For the BalanceBot have the following components to be merged together into one system:
+
+1) CPU:
+
+Raspberry Pi, Model B+, V1, https://www.raspberrypi.org/products/model-b-plus/
+ - The Pi has 
+ - The GPIO header has 40 pins, the first 26 pins the same as the Model A and B.
+ - 4 USB 2.0 ports
+ - Micro SD. 
+
+Alternatively, we could use one of the Arduinos.  That would make it a little bit difficult to work directly
+with video inputs, but there is no reason we couldn't put a second processor on board.
+
+Or, we could hook up a RoboRIO or a MyRIO for the application.  We would have to look at the 
+total power requirement, as those are much higher power users than the Pi or the Arduino.
+
+2) POWER:
+
+I have a Grove I2C Motor Controller.  The biggest disadvantage of the controller is that it can only 
+handle 2 amps per channel.  The Pololu motors sink about 5 amps of current at 12 volts, so this 
+could be a problem.
+
+As an alternative, the Pololu Dual VNH3SP30 Motor Driver Carrier MD03A, which sells for $49.94, provides up to
+amps of continuous power and up to 24 volts.  Since the motors are rated at 12 volts and 5 amps, this device
+would be the best, and least expensive.
+
+It is also possible to build a power unit ourselves.  There are several tutorials on the web for such devices.
+The actual cost for the parts is probably around $40 for a suitably sized controller.
+
+
+3) The IMU:
+
+BNO055 Absolute Orientation IMU, with 9 degrees of freedom.
+
+Alternatively, we could build this using an Arduino.  I have a tilt unit for the Arduino in 6 degrees of
+freedom. We probably really only need tilt and yaw. 
+
+4) Pololu 37d gearmotors.  They run at 350 RPM and draw a continuous 5 amps of power at 12 volts during max drain.
+
+The connector for the motors provides path for power from the controller and returns encoder signals.
+ - Color   Function
+ - Red     motor power (connects to one motor terminal)
+ - Black   motor power (connects to the other motor terminal)
+ - Green   encoder GND
+ - Blue    encoder Vcc (3.5 – 20 V)
+ - Yellow  encoder A output
+ - White   encoder B output
+
+5) VIDEO:
+
+We can work on that later, but the Pi and the RoboRIO or MyRIO can both handle USB input.
+
+6) CONTROL:
+
+This is a bit down the road, but we ultimately want something like the guy in the virtual reality headset and body movement sensors.
